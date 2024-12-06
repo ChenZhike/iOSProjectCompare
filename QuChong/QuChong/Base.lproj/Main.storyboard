@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="seg-mode">
+                                <rect key="frame" x="20" y="79" width="353" height="32"/>
+                                <segments>
+                                    <segment title="单项目分析"/>
+                                    <segment title="项目比较"/>
+                                </segments>
+                                <connections>
+                                    <action selector="modeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="seg-action"/>
+                                </connections>
+                            </segmentedControl>
+                            
+                            <!-- 单项目分析视图 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="single-view">
+                                <rect key="frame" x="0.0" y="130" width="393" height="688"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-select-project">
+                                        <rect key="frame" x="20" y="20" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="height-1"/>
+                                        </constraints>
+                                        <state key="normal" title="选择项目文件夹"/>
+                                        <connections>
+                                            <action selector="selectProjectFolder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btn-action-1"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="txt-single-result">
+                                        <rect key="frame" x="20" y="80" width="353" height="588"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="btn-select-project" firstAttribute="leading" secondItem="single-view" secondAttribute="leading" constant="20" id="c1"/>
+                                    <constraint firstAttribute="trailing" secondItem="btn-select-project" secondAttribute="trailing" constant="20" id="c2"/>
+                                    <constraint firstItem="btn-select-project" firstAttribute="top" secondItem="single-view" secondAttribute="top" constant="20" id="c3"/>
+                                    <constraint firstItem="txt-single-result" firstAttribute="top" secondItem="btn-select-project" secondAttribute="bottom" constant="20" id="c4"/>
+                                    <constraint firstItem="txt-single-result" firstAttribute="leading" secondItem="single-view" secondAttribute="leading" constant="20" id="c5"/>
+                                    <constraint firstAttribute="trailing" secondItem="txt-single-result" secondAttribute="trailing" constant="20" id="c6"/>
+                                    <constraint firstAttribute="bottom" secondItem="txt-single-result" secondAttribute="bottom" constant="20" id="c7"/>
+                                </constraints>
+                            </view>
+                            
+                            <!-- 项目比较视图 -->
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="compare-view">
+                                <rect key="frame" x="0.0" y="130" width="393" height="688"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-project1">
+                                        <rect key="frame" x="20" y="20" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="height-2"/>
+                                        </constraints>
+                                        <state key="normal" title="选择项目1"/>
+                                        <connections>
+                                            <action selector="selectProject1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btn-action-2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-project2">
+                                        <rect key="frame" x="20" y="80" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="height-3"/>
+                                        </constraints>
+                                        <state key="normal" title="选择项目2"/>
+                                        <connections>
+                                            <action selector="selectProject2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btn-action-3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-compare">
+                                        <rect key="frame" x="20" y="140" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="height-4"/>
+                                        </constraints>
+                                        <state key="normal" title="开始比较"/>
+                                        <connections>
+                                            <action selector="startCompare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btn-action-4"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="txt-compare-result">
+                                        <rect key="frame" x="20" y="200" width="353" height="468"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="btn-project1" firstAttribute="leading" secondItem="compare-view" secondAttribute="leading" constant="20" id="c8"/>
+                                    <constraint firstAttribute="trailing" secondItem="btn-project1" secondAttribute="trailing" constant="20" id="c9"/>
+                                    <constraint firstItem="btn-project1" firstAttribute="top" secondItem="compare-view" secondAttribute="top" constant="20" id="c10"/>
+                                    <constraint firstItem="btn-project2" firstAttribute="top" secondItem="btn-project1" secondAttribute="bottom" constant="20" id="c11"/>
+                                    <constraint firstItem="btn-project2" firstAttribute="leading" secondItem="compare-view" secondAttribute="leading" constant="20" id="c12"/>
+                                    <constraint firstAttribute="trailing" secondItem="btn-project2" secondAttribute="trailing" constant="20" id="c13"/>
+                                    <constraint firstItem="btn-compare" firstAttribute="top" secondItem="btn-project2" secondAttribute="bottom" constant="20" id="c14"/>
+                                    <constraint firstItem="btn-compare" firstAttribute="leading" secondItem="compare-view" secondAttribute="leading" constant="20" id="c15"/>
+                                    <constraint firstAttribute="trailing" secondItem="btn-compare" secondAttribute="trailing" constant="20" id="c16"/>
+                                    <constraint firstItem="txt-compare-result" firstAttribute="top" secondItem="btn-compare" secondAttribute="bottom" constant="20" id="c17"/>
+                                    <constraint firstItem="txt-compare-result" firstAttribute="leading" secondItem="compare-view" secondAttribute="leading" constant="20" id="c18"/>
+                                    <constraint firstAttribute="trailing" secondItem="txt-compare-result" secondAttribute="trailing" constant="20" id="c19"/>
+                                    <constraint firstAttribute="bottom" secondItem="txt-compare-result" secondAttribute="bottom" constant="20" id="c20"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="seg-mode" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="c21"/>
+                            <constraint firstItem="seg-mode" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="c22"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="seg-mode" secondAttribute="trailing" constant="20" id="c23"/>
+                            <constraint firstItem="single-view" firstAttribute="top" secondItem="seg-mode" secondAttribute="bottom" constant="20" id="c24"/>
+                            <constraint firstItem="single-view" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c25"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="single-view" secondAttribute="trailing" id="c26"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="single-view" secondAttribute="bottom" id="c27"/>
+                            <constraint firstItem="compare-view" firstAttribute="top" secondItem="seg-mode" secondAttribute="bottom" constant="20" id="c28"/>
+                            <constraint firstItem="compare-view" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c29"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="compare-view" secondAttribute="trailing" id="c30"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="compare-view" secondAttribute="bottom" id="c31"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="compareView" destination="compare-view" id="outlet-1"/>
+                        <outlet property="compareResultTextView" destination="txt-compare-result" id="outlet-2"/>
+                        <outlet property="project1Button" destination="btn-project1" id="outlet-3"/>
+                        <outlet property="project2Button" destination="btn-project2" id="outlet-4"/>
+                        <outlet property="singleView" destination="single-view" id="outlet-5"/>
+                        <outlet property="singleResultTextView" destination="txt-single-result" id="outlet-6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.824427480916029" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
